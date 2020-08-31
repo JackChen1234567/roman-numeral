@@ -1,0 +1,26 @@
+version: '3'
+
+services:
+  mysql-standalone:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=roman_numeral
+      - MYSQL_USER=test
+      - MYSQL_PASSWORD=test
+    ports:
+      - 3306:3306
+    volumes:
+      - /data/mysql
+  roman-numeral:
+    image: roman-numeral:1
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    entrypoint: /opt/bin/EntryPoint.sh
+    depends_on:
+      - mysql-standalone
+    ports:
+        - 8081:8081
+    volumes:
+      - /data/roman-numeral

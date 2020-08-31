@@ -1,0 +1,9 @@
+
+CREATE TABLE history (
+	history_id BIGINT(10) NOT NULL AUTO_INCREMENT,
+	input VARCHAR(50),
+	output VARCHAR(50),
+	conversion_type VARCHAR(30),
+	created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	PRIMARY KEY (history_id)
+)
